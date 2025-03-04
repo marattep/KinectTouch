@@ -19,8 +19,8 @@
 using namespace std;
 
 // openCV
-#include <opencv/highgui.h>
-#include <opencv/cv.h>
+#include <opencv2/highgui.hpp>
+#include <opencv2/opencv.hpp>
 using namespace cv;
 
 // openNI
@@ -181,7 +181,7 @@ int main() {
 		// find touch points
 		vector< vector<Point2i> > contours;
 		vector<Point2f> touchPoints;
-		findContours(touchRoi, contours, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE, Point2i(xMin, yMin));
+		findContours(touchRoi, contours, RETR_LIST, CHAIN_APPROX_SIMPLE, Point2i(xMin, yMin));
 		for (unsigned int i=0; i<contours.size(); i++) {
 			Mat contourMat(contours[i]);
 			// find touch points by area thresholding
@@ -216,11 +216,11 @@ int main() {
 
 		// draw debug frame
 		depth.convertTo(depth8, CV_8U, 255 / debugFrameMaxDepth); // render depth to debug frame
-		cvtColor(depth8, debug, CV_GRAY2BGR);
+		cvtColor(depth8, debug, COLOR_GRAY2BGR);
 		debug.setTo(debugColor0, touch);  // touch mask
 		rectangle(debug, roi, debugColor1, 2); // surface boundaries
 		for (unsigned int i=0; i<touchPoints.size(); i++) { // touch points
-			circle(debug, touchPoints[i], 5, debugColor2, CV_FILLED);
+			circle(debug, touchPoints[i], 5, debugColor2, FILLED);
 		}
 
 		// render debug frame (with sliders)
