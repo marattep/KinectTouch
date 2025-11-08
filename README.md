@@ -51,3 +51,4 @@ TODOs
  - Tracking / filtering of touch points 
 
 
+sudo apt-get install libxinerama-dev

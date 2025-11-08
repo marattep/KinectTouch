@@ -4,3 +4,6 @@ CMakeCache.txt
 Makefile
 KinectTouch
 cmake_install.cmake
+download/
+urllib.error
+KinectTouch1
